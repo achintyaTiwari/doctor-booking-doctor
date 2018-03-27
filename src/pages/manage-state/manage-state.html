@@ -1,0 +1,52 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>manageState</ion-title>
+    
+    
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+ <ion-item>
+ <ion-label for="country">Country:</ion-label> 
+  <ion-select name="country" #country (ionChange)="findState(country.value)">
+  <ion-option value="{{countryOpt}}" *ngFor="let countryOpt of countries; let i = index;">
+  {{countryOpt}}
+  </ion-option>
+ </ion-select>
+</ion-item>
+
+
+	<form [formGroup]="stateForm">
+   <ion-grid formArrayName="states">
+  <ion-row  *ngFor="let state of stateForm.controls['states'].controls; let i = index;">
+    <ion-col col-10>
+  <ion-item> 
+   <ion-input type="text" [formControlName]="i" (focusout)="putStates(stateForm.value)"></ion-input>  
+  </ion-item>
+   </ion-col>
+   <ion-col col-2>
+   <button ion-button (click)="deleteState(i)" clear large color="dark"><ion-icon name="md-trash"></ion-icon>
+   </button>
+ </ion-col>
+  </ion-row>
+  </ion-grid>
+ 
+	</form>	
+	
+<br>
+
+<button ion-button small (click)="add()" float-left outline><ion-icon name="add"></ion-icon></button>
+
+<br>
+
+
+
+</ion-content>

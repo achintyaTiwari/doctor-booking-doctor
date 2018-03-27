@@ -1,0 +1,141 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>manageDoctor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+
+<ion-item>
+ <ion-label for="country">Country:</ion-label> 
+  <ion-select name="country" #country (ionChange)="findState(country.value)">
+  <ion-option value="{{countryOpt}}" *ngFor="let countryOpt of countries; let i = index;">
+  {{countryOpt}}
+  </ion-option>
+ </ion-select>
+</ion-item>
+
+
+<ion-item *ngIf="states.length>0">
+<ion-label for="state">State:</ion-label>
+<ion-select name="state" #state (ionChange)= "findCity(state.value)">
+<ion-option value="{{stateOpt}}" *ngFor="let stateOpt of states; let j =index;">
+  {{stateOpt}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+
+<ion-item *ngIf="cities.length>0">
+<ion-label for="city">City:</ion-label>
+<ion-select name="city" #city (ionChange)= "findHospital(city.value)">
+<ion-option value="{{cityOpt.city}}" *ngFor="let cityOpt of cities; let k =index;">
+  {{cityOpt.city}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+<ion-item *ngIf="hospitals.length>0">
+<ion-label for="city">Hospital:</ion-label>
+<ion-select name="city" #hospital (ionChange)= "findDoctor(hospital.value)">
+<ion-option value="{{hospitalOpt.hospital}}" *ngFor="let hospitalOpt of hospitals; let k =index;">
+  {{hospitalOpt.hospital}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+
+<form [formGroup]="doctorForm" (ngSubmit)="putDoctor(doctorForm.value)">
+ <ion-grid formArrayName="doctors">
+   <ion-row *ngFor="let doctor of doctorForm.controls['doctors'].controls; let l = index;">
+   	<ion-card  [formGroupName]="l">
+   	<ion-card-content>
+   		<button type="button" ion-button (click)="deleteDoctor(i)" clear large color="dark" float-right><ion-icon name="md-trash"></ion-icon></button>
+   		<ion-item>
+   		<ion-label>Doctor:</ion-label>
+   		<ion-input formControlName="doctor"></ion-input>
+   		</ion-item>
+
+   		<ion-item>
+   		<ion-label>Fare:</ion-label>
+   		<ion-input formControlName="fare"></ion-input>
+		</ion-item>
+
+		<ion-item>
+   		<ion-label>Seat:</ion-label>
+   		<ion-input formControlName="seat"></ion-input>
+		</ion-item>
+		
+		<hr>
+
+		<ion-item>
+		<ion-grid formArrayName="day">
+		
+
+		<ion-row>
+		<ion-col><b>Availability:</b></ion-col>
+		<br>
+		</ion-row>
+
+
+		<ion-row>
+		<ion-col *ngFor="let day of doctor.controls['day'].controls; let p = index" >
+		<ion-item>	
+		<ion-checkbox [formControlName]="p"></ion-checkbox>
+		</ion-item>
+		{{days[p]}}	
+		</ion-col>	
+		</ion-row>
+
+		</ion-grid>
+		</ion-item>
+
+		<hr>
+
+		<ion-item>
+		<ion-grid formArrayName="speciality">
+		
+
+		<ion-row>
+		<ion-col><b>Specialization:</b></ion-col>
+		<br>
+		</ion-row>
+
+
+		<ion-row>
+		<ion-col *ngFor="let day of doctor.controls['speciality'].controls; let g = index" col-12>
+		<ion-item>	
+		<ion-checkbox [formControlName]="g"></ion-checkbox>
+		</ion-item>
+		<p class="checkbox-text">{{specialities[g]}}</p>	
+		</ion-col>	
+		</ion-row>
+		</ion-grid>
+		</ion-item>
+         
+   
+	</ion-card-content>
+   	</ion-card>
+
+   </ion-row>
+
+  </ion-grid>
+
+<br>
+
+<button type="button" ion-button small (click)="add()" float-left outline><ion-icon name="add"></ion-icon></button>
+
+<br>
+
+   <ion-item padding *ngIf="doctorForm.controls['doctors'].length>0">
+     <button ion-button type="submit">Save</button>
+    </ion-item>
+</form>
+
+</ion-content>
+

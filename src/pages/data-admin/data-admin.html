@@ -1,0 +1,56 @@
+
+<ion-header>
+
+  <ion-navbar>
+  	<ion-buttons>
+    <button ion-button icon-only menuToggle="menu-panel">
+  	<ion-icon name="menu"></ion-icon>
+    </button> 
+    </ion-buttons>
+    <ion-title>Data Admin</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+  		<ion-item item-start>
+    <button ion-button icon-only clear color="dark" large [navPush]="manageCountry">  
+      <ion-icon name="cart"></ion-icon>
+    </button>
+      Countries
+	</ion-item>
+
+  	<ion-item item-start>
+    <button ion-button icon-only clear color="dark" large [navPush]="manageState">  
+      <ion-icon name="cart"></ion-icon>
+    </button>
+      States
+	</ion-item>
+	
+	 <ion-item item-start>
+    <button ion-button icon-only clear color="dark" large [navPush]="manageCity">
+      <ion-icon name="cart"></ion-icon>
+    </button>  
+      Cities
+	</ion-item>
+	
+	<ion-item item-start>
+    <button ion-button icon-only clear color="dark" large [navPush]="manageHospital">
+      <ion-icon name="cart"></ion-icon>
+    </button>
+      Hospitals
+	</ion-item>
+	
+	 <ion-item item-start>
+    <button ion-button icon-only clear color="dark" large  [navPush]="manageDoctor">
+      <ion-icon name="cart"></ion-icon>
+    </button>
+      Doctors
+	</ion-item>
+	<hr>	
+	</ion-list>
+</ion-content>
+

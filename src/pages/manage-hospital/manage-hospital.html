@@ -1,0 +1,78 @@
+<!--
+  Generated template for the ManageHospitalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>manageCity</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+<ion-item>
+ <ion-label for="country">Country:</ion-label> 
+  <ion-select name="country" #country (ionChange)="findState(country.value)">
+  <ion-option value="{{countryOpt}}" *ngFor="let countryOpt of countries; let i = index;">
+  {{countryOpt}}
+  </ion-option>
+ </ion-select>
+</ion-item>
+<ion-item *ngIf="states.length>0">
+<ion-label for="state">State:</ion-label>
+<ion-select name="state" #state (ionChange)= "findCity(state.value)">
+<ion-option value="{{stateOpt}}" *ngFor="let stateOpt of states; let j =index;">
+  {{stateOpt}}
+</ion-option>
+</ion-select>
+</ion-item>
+<ion-item *ngIf="cities.length>0">
+<ion-label for="city">City:</ion-label>
+<ion-select name="city" #city (ionChange)= "findHospital(city.value)">
+<ion-option value="{{cityOpt.city}}" *ngFor="let cityOpt of cities; let k =index;">
+  {{cityOpt.city}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+
+
+<form [formGroup]="hospitalForm">
+ <ion-grid formArrayName="hospitals">
+   <ion-row *ngFor="let hospital of hospitalForm.controls['hospitals'].controls; let i = index;">
+   	<ion-card  [formGroupName]="i">
+        <ion-card-content>
+          <button type="button" ion-button (click)="deleteHospital(i)" clear large color="dark" float-right><ion-icon name="md-trash"></ion-icon></button>
+         <ion-item>
+         	  <ion-label>Hospital:</ion-label>
+             <ion-input formControlName="hospital" value="{{hospital.controls['hospital'].value}}"                 (focusout)="putHospital(hospitalForm.value)"></ion-input>
+         </ion-item>
+         <ion-item>
+         	<ion-label>Address:</ion-label>
+             <ion-input formControlName="address" value="{{ hospital.controls['address'].value }}" 
+             (focusout)="putHospital(hospitalForm.value)"></ion-input>
+         </ion-item>
+        </ion-card-content>
+   	</ion-card>
+   </ion-row>
+  </ion-grid>
+</form>
+
+<br>
+
+<button ion-button small (click)="add()" float-left outline><ion-icon name="add"></ion-icon></button>
+
+<br>
+
+
+</ion-content>

@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+  	<ion-buttons>
+    <button ion-button icon-only menuToggle="menu-panel">
+  	<ion-icon name="menu"></ion-icon>
+    </button> 
+    </ion-buttons>
+    <ion-title text-center>City</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="back">
+	
+
+<ion-item>
+
+ <ion-label for="country">Country:</ion-label> 
+  <ion-select name="country" #country (ionChange)="findState(country.value)">
+  <ion-option value="{{countryOpt}}" *ngFor="let countryOpt of countries; let i = index;">
+  {{countryOpt}}
+  </ion-option>
+ </ion-select>
+</ion-item>
+<ion-item *ngIf="states.length>0">
+<ion-label for="state">State:</ion-label>
+<ion-select name="state" #state (ionChange)= "findCity(state.value)">
+<ion-option value="{{stateOpt}}" *ngFor="let stateOpt of states; let j =index;">
+  {{stateOpt}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+<div *ngIf="cities.length>0">
+<ion-item >
+<ion-label for="city">City:</ion-label>
+<ion-select name="city" #citySelect>
+<ion-option value="{{cityOpt.city}}" *ngFor="let cityOpt of cities; let k =index;">
+  {{cityOpt.city}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+<br>
+<button class="back" ion-button small outline (click)="findHospital(citySelect.value)" float-right>Find Hospital</button>
+<br>
+</div>
+
+</ion-content>
+<ion-footer>
+  <button ion-button small [navPush]="ledger">Ledger</button>
+  <button ion-button small [navPush]="dataAdmin">Data-Admin</button>
+  <button ion-button small [navPush]="doctorDashboard">Doctor-Dashboard</button>
+</ion-footer>

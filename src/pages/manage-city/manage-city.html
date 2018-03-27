@@ -1,0 +1,61 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>manageCity</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+<ion-item>
+ <ion-label for="country">Country:</ion-label> 
+  <ion-select name="country" #country (ionChange)="findState(country.value)">
+  <ion-option value="{{countryOpt}}" *ngFor="let countryOpt of countries; let i = index;">
+  {{countryOpt}}
+  </ion-option>
+ </ion-select>
+</ion-item>
+<ion-item *ngIf="states.length>0">
+<ion-label for="state">State:</ion-label>
+<ion-select name="state" #state (ionChange)= "findCity(state.value)">
+<ion-option value="{{stateOpt}}" *ngFor="let stateOpt of states; let j =index;">
+  {{stateOpt}}
+</ion-option>
+</ion-select>
+</ion-item>
+
+
+
+<form [formGroup]="cityForm">
+ <ion-grid formArrayName="cities">
+   <ion-row *ngFor="let city of cityForm.controls['cities'].controls; let i = index;">
+   	<ion-card  [formGroupName]="i">
+        <ion-card-content>
+          <button type="button" ion-button (click)="deleteCity(i)" clear large color="dark" float-right><ion-icon name="md-trash"></ion-icon></button>
+         <ion-item>
+         	  <ion-label>City:</ion-label>
+             <ion-input formControlName="city" value="{{city.controls['city'].value}}"                     (focusout)="putCity(cityForm.value)"></ion-input>
+         </ion-item>
+         <ion-item>
+         	<ion-label>Pincode:</ion-label>
+             <ion-input formControlName="pincode" value="{{city.controls['pincode'].value}}" 
+             (focusout)="putCity(cityForm.value)"></ion-input>
+         </ion-item>
+        </ion-card-content>
+   	</ion-card>
+   </ion-row>
+  </ion-grid>
+</form>
+
+<br>
+
+<button ion-button small (click)="add()" float-left outline><ion-icon name="add"></ion-icon></button>
+
+<br>
+
+
+</ion-content>

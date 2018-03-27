@@ -1,0 +1,17 @@
+<ion-menu [content]="content" id="menu-panel">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list *ngIf="mnds.currentPage == 'DoctorMainPage'">
+      <button ion-item (click)="getNav()">
+        getNav
+      </button>
+    </ion-list>
+    Doctor Panel
+  </ion-content>
+</ion-menu>
+<ion-nav #content [root]="rootPage" #nav></ion-nav>
+
