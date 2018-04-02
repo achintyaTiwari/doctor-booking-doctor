@@ -4,14 +4,54 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-list *ngIf="mnds.currentPage == 'DoctorMainPage'">
-      <button ion-item (click)="getNav()">
-        getNav
+  <ion-content *ngIf="mnds.currentPage !== 'DoctorMainPage'"> 
+
+    <ion-list>
+      <ion-item class="sideMenuTop" no-lines>
+        <br>
+        <ion-icon name="contact" style="font-size:40px"></ion-icon>
+        &nbsp;<span>doctor name</span>
+        <br>
+      </ion-item>  
+
+
+      <hr>
+
+      <button menuClose ion-item no-lines (click)="home()">
+       <ion-icon name="home"></ion-icon>
+        &emsp;
+        Home
       </button>
+      <button menuClose ion-item no-lines (click)="bookingLedger()">
+       <ion-icon name="book"></ion-icon>
+        &emsp;       
+       Booking Ledger
+      </button>
+      
+      <hr>
+
+      <button menuClose ion-item no-lines (click)="settings()">
+       <ion-icon name="settings"></ion-icon>
+        &emsp;       
+       Settings
+      </button>
+      <button menuClose ion-item no-lines (click)="profile()">
+       <ion-icon name="person"></ion-icon>
+        &emsp;       
+       Profile
+      </button>
+      <button menuClose ion-item no-lines (click)="initialProfile()">
+       <ion-icon name="person"></ion-icon>
+        &emsp;       
+       Initial Profile
+      </button>      
+      <button menuClose ion-item no-lines (click)="support()">
+       <ion-icon name="help"></ion-icon>
+        &emsp;       
+       Support
+      </button>      
     </ion-list>
-    Doctor Panel
   </ion-content>
 </ion-menu>
-<ion-nav #content [root]="rootPage" #nav></ion-nav>
 
+<ion-nav #content [root]="rootPage" #nav></ion-nav>

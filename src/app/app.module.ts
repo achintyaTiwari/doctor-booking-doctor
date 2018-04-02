@@ -8,22 +8,18 @@ import { MyApp } from './app.component';
 import { LedgerPage } from '../pages/ledger/ledger';
 import { AddNewPatient } from '../modal/add-new-patient/AddNewPatient';
 import { EditPatient } from '../modal/edit-patient/EditPatient';
-import { UserService } from '../services/doctor-services/services.hospital';
-import { CityPage } from '../pages/city/city';
-import { HospitalPage } from '../pages/hospital/hospital';
-import { DoctorPage } from '../pages/doctor/doctor';
-import { PatientPage } from '../pages/patient/patient';
-import { DataAdminPage } from '../pages/data-admin/data-admin';
-import { ManageCountryPage } from '../pages/manage-country/manage-country';
-import { ManageStatePage } from '../pages/manage-state/manage-state';
-import { ManageCityPage } from '../pages/manage-city/manage-city';
-import { ManageHospitalPage } from '../pages/manage-hospital/manage-hospital';
-import { ManageDoctorPage } from '../pages/manage-doctor/manage-doctor';
 import { ManageDataService } from '../services/manage-data/services.managedata';
 import { DatePickerModule } from 'ionic3-datepicker';
 import { Availability } from '../modal/availability/availability';
 import { DoctorDashboardPage } from '../pages/doctor-dashboard/doctor-dashboard';
 import { DoctorMainPage } from '../pages/doctor-main/doctor-main';
+import { BookingLedgerPage } from '../pages/booking-ledger/booking-ledger';
+import { SettingsPage } from '../pages/settings/settings';
+import { ProfilePage } from '../pages/profile/profile';
+import { InitialProfilePage } '../pages/initial-profile/initial-profile';
+import { SupportPage } from '../pages/support/support';
+import { TermsPage } from '../pages/terms/terms';
+
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 
@@ -34,20 +30,17 @@ const config: SocketIoConfig = { url: 'http://159.89.164.22:80' , options: {} };
     MyApp,
     AddNewPatient,
     EditPatient,
-    CityPage,
-    HospitalPage,
-    DoctorPage,
-    PatientPage,
     LedgerPage,
-    DataAdminPage,
-    ManageStatePage,
-    ManageCityPage,
-    ManageHospitalPage,
-    ManageDoctorPage,
-    ManageCountryPage,
     Availability,
     DoctorDashboardPage,
-    DoctorMainPage
+    DoctorMainPage,
+    BookingLedgerPage,
+    SettingsPage,
+    ProfilePage,
+    InitialProfilePage,
+    SupportPage,
+    TermsPage
+
   ],
   imports: [
     BrowserModule,
@@ -61,27 +54,21 @@ const config: SocketIoConfig = { url: 'http://159.89.164.22:80' , options: {} };
     MyApp,
     AddNewPatient,
     EditPatient,
-    CityPage,
-    HospitalPage,
-    DoctorPage,
-    PatientPage,
     LedgerPage,
-    DataAdminPage,
-    ManageStatePage,
-    ManageCityPage,
-    ManageHospitalPage,
-    ManageDoctorPage,
-    ManageCountryPage,
     Availability,
     DoctorDashboardPage,
-    DoctorMainPage     
-     
+    DoctorMainPage,
+    BookingLedgerPage,
+    SettingsPage,
+    ProfilePage,
+    InitialProfilePage,    
+    SupportPage,
+    TermsPage             
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserService,
     ManageDataService
   ]
 })

@@ -2,7 +2,7 @@ import { DatePickerDirective } from 'ionic3-datepicker';
 import { NavController,ViewController,NavParams } from 'ionic-angular';
 import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { ManageDataService } from '../../services/manage-data/services.managedata';
-import { PatientPage } from '../../pages/patient/patient';
+//import { PatientPage } from '../../pages/patient/patient';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { Socket } from 'ng-socket-io';
@@ -218,7 +218,7 @@ export class Availability implements OnDestroy {
 
 
   proceed() {
-    this.navCtrl.push(PatientPage, {country:this.country,state:this.state,city:this.city,hospital:this.hospital,doctor:this.doctor,selectedDate:this.selectedDate});
+//    this.navCtrl.push(PatientPage, {country:this.country,state:this.state,city:this.city,hospital:this.hospital,doctor:this.doctor,selectedDate:this.selectedDate});
   }
 
 

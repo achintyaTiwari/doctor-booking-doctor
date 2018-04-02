@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { DoctorMainPage } from '../doctor-main/doctor-main';
+import { ManageDataService } from '../../services/manage-data/services.managedata'
 
 @Component({
   selector: 'page-doctor-dashboard',
@@ -8,7 +9,9 @@ import { DoctorMainPage } from '../doctor-main/doctor-main';
 })
 export class DoctorDashboardPage {
 	
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private mnds: ManageDataService) {
+
+  	this.mnds.currentPage = 'DoctorDashboardPage';
   
   }
 
@@ -17,3 +20,4 @@ export class DoctorDashboardPage {
   }
 
 }
+

@@ -1,24 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { DoctorDashboardPage } from '../doctor-dashboard/doctor-dashboard';
 import { ManageDataService } from '../../services/manage-data/services.managedata';
 
+
 @Component({
-  selector: 'page-doctor-main',
-  templateUrl: 'doctor-main.html',
+  selector: 'page-settings',
+  templateUrl: 'settings.html',
 })
-export class DoctorMainPage {
+export class SettingsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mnds: ManageDataService) {
-  this.mnds.currentPage = 'DoctorMainPage';
+  this.mnds.currentPage = 'SettingsPage';
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DoctorMainPage');
-  }
-
-  login() {
-  	this.navCtrl.setRoot(DoctorDashboardPage);
+    console.log('ionViewDidLoad SettingsPage');
   }
 
 }

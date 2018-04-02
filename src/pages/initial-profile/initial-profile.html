@@ -1,0 +1,192 @@
+<ion-header>
+
+  <ion-navbar>
+  	<ion-buttons start>
+    <button ion-button icon-only menuToggle="menu-panel">
+  	<ion-icon name="menu"></ion-icon>
+    </button> 
+    </ion-buttons>
+    <ion-title>initial-profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<form [formGroup]="initialForm">
+	<hr>
+	
+	<h6>&emsp;General Details</h6>
+
+
+	<ion-item no-lines>
+	<ion-label>Country:</ion-label>
+	<ion-input formControlName="country"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>State:</ion-label>
+	<ion-input formControlName="state"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>City:</ion-label>
+	<ion-input formControlName="city"></ion-input>
+	</ion-item>
+	
+	<ion-item no-lines>
+	<ion-label>Hospital:</ion-label>
+	<ion-input formControlName="hospital"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Doctor:</ion-label>
+	<ion-input formControlName="doctor"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Date Of Birth:</ion-label>
+	<ion-datetime displayFormat="DD MMM, YYYY" formControlName="dob"></ion-datetime>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Gender:</ion-label>
+	<ion-select formControlName="gender">
+		<ion-option value="M">Male</ion-option>
+		<ion-option value="F">Female</ion-option>
+		<ion-option value="O">Other</ion-option>
+	</ion-select>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Address:</ion-label>
+	<ion-input formControlName="address"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>TelePhone:</ion-label>
+	<ion-input formControlName="phone"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Mobile:</ion-label>
+	<ion-input formControlName="mobile"></ion-input>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Email:</ion-label>
+	<ion-input formControlName="email"></ion-input>
+	</ion-item>
+
+	<hr>
+	
+	<h6>&emsp;Specific Details</h6>
+
+	<ion-item no-lines>
+	<ion-label>Fare:</ion-label>
+	<ion-input type="number" formControlName="fare"></ion-input>
+	</ion-item>
+
+
+	<ion-item no-lines>
+	<ion-label>Total Seats (per day):</ion-label>
+	<ion-input type="number" formControlName="seat"></ion-input>
+	</ion-item>
+
+
+	<ion-item no-lines>
+	<ion-label>Average Time (per patient):</ion-label>
+	<ion-datetime displayFormat="mm" formControlName="averageAppointmentTime" placeholder="in minutes"></ion-datetime>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Opening Time (per day):</ion-label>
+	<ion-datetime displayFormat="HH:mm" formControlName="openingTime" placeholder="Hours:minutes"></ion-datetime>
+	</ion-item>
+
+	<ion-item no-lines>
+	<ion-label>Closing Time (per day):</ion-label>
+	<ion-datetime displayFormat="HH:mm"  formControlName="closingTime" placeholder="Hours:minutes"></ion-datetime>
+	</ion-item>
+
+	<hr>
+
+	<ion-item no-lines>
+	<ion-grid formArrayName="day">
+
+
+	<ion-row>
+	<ion-col><b>Availability:</b></ion-col>
+	<br>
+	</ion-row>
+
+
+	<ion-row>
+	<ion-col *ngFor="let day of initialForm.controls['day'].controls; let p = index" >
+	<ion-item no-lines>
+	<ion-checkbox [formControlName]="p"></ion-checkbox>
+	</ion-item>
+	{{days[p]}}	
+	</ion-col>	
+	</ion-row>
+
+	</ion-grid>
+	</ion-item>
+
+	<hr>
+
+	<ion-item no-lines>
+	<ion-grid formArrayName="speciality">
+
+
+	<ion-row>
+	<ion-col><b>Specialization:</b></ion-col>
+	<br>
+	</ion-row>
+
+
+	<ion-row>
+	<ion-col *ngFor="let day of initialForm.controls['speciality'].controls; let g = index" col-12>
+	<ion-item no-lines>	
+	<ion-checkbox [formControlName]="g"></ion-checkbox>
+	</ion-item>
+	<p class="checkbox-text">{{specialities[g]}}</p>	
+	</ion-col>	
+	</ion-row>
+	</ion-grid>
+	</ion-item>
+
+	<br>
+	<hr>
+	
+	<ion-grid>
+	<ion-row>
+	<ion-col col-2>
+		<ion-item no-lines>
+		<ion-checkbox #check></ion-checkbox>
+		</ion-item>
+	</ion-col>
+	<ion-col>
+		<p  class="checkbox-text">I Accept all <a (click)="terms()">Terms & Conditions</a></p>
+	</ion-col>	
+	</ion-row>
+	<ion-row>
+	<ion-col>
+	</ion-col>
+	<ion-col>
+		<button (click)="submitApplication()" ion-button small align="center" [disabled]="!check.value">
+		Submit Application
+		</button>
+	</ion-col>
+	<ion-col>
+	</ion-col>	
+	</ion-row>	
+	</ion-grid>
+
+</form>
+</ion-content>
+
+<!-- schema banaenge doctor-verification ka
+	 new doctor profile will be send there
+	 those values can be changed by admin 
+	 there will be a verify and reject  button,
+-->

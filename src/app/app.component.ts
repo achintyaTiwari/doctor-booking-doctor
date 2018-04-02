@@ -4,6 +4,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DoctorMainPage } from '../pages/doctor-main/doctor-main';
 import { DoctorDashboardPage } from '../pages/doctor-dashboard/doctor-dashboard';
+import { BookingLedgerPage } from '../pages/booking-ledger/booking-ledger';
+import { SettingsPage } from '../pages/settings/settings';
+import { ProfilePage } from '../pages/profile/profile';
+import { InitialProfilePage } '../pages/initial-profile/initial-profile';
+import { SupportPage } from '../pages/support/support';
+
 import { ManageDataService } from '../services/manage-data/services.managedata';
 
 @Component({
@@ -13,7 +19,7 @@ import { ManageDataService } from '../services/manage-data/services.managedata';
 
 export class MyApp {
 
-  @ViewChild('nav')navCtrl: NavController; 
+  @ViewChild('nav') navCtrl: NavController;
 
   rootPage:any = DoctorMainPage;
 
@@ -28,10 +34,40 @@ export class MyApp {
 
   }
 
-  getNav() {
-    console.log(this.navCtrl.getActive().name);
-    return this.navCtrl.getActive().name;
+  home() {
+
+    this.navCtrl.setRoot(DoctorDashboardPage);
+
+  }
+
+  bookingLedger() {
+
+    this.navCtrl.setRoot(BookingLedgerPage);
+
+  }
+
+  settings() {
+
+    this.navCtrl.setRoot(SettingsPage);
+
+  }
+
+  profile() {
+
+    this.navCtrl.setRoot(ProfilePage);
+
+  }
+
+  initialProfile() {
+
+    this.navCtrl.setRoot(InitialProfilePage);
+
+  }
+
+  support() {
+
+    this.navCtrl.setRoot(SupportPage);
+  
   }
 
 }
-
