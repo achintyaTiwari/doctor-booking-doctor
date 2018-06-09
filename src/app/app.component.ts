@@ -7,7 +7,7 @@ import { DoctorDashboardPage } from '../pages/doctor-dashboard/doctor-dashboard'
 import { BookingLedgerPage } from '../pages/booking-ledger/booking-ledger';
 import { SettingsPage } from '../pages/settings/settings';
 import { ProfilePage } from '../pages/profile/profile';
-import { InitialProfilePage } '../pages/initial-profile/initial-profile';
+import { InitialProfilePage } from '../pages/initial-profile/initial-profile';
 import { SupportPage } from '../pages/support/support';
 
 import { ManageDataService } from '../services/manage-data/services.managedata';
